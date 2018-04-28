@@ -15,24 +15,25 @@
  */
 package org.springframework.cloud.function.deployer;
 
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.cloud.function.context.config.ContextFunctionCatalogAutoConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import org.springframework.context.annotation.Import;
 
 /**
+ * Annotation to be used on a Spring Boot application if it wants to deploy a jar file
+ * containing a function definition.
+ * 
  * @author Dave Syer
  *
  */
-@Configuration
-@ConditionalOnClass(FunctionExtractingFunctionCatalog.class)
-@AutoConfigureBefore(ContextFunctionCatalogAutoConfiguration.class)
-public class FunctionExtractingAutoConfiguration {
-
-	@Bean
-	public FunctionExtractingFunctionCatalog functionCatalog() {
-		return new FunctionExtractingFunctionCatalog();
-	}
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Import(FunctionDeployerConfiguration.class)
+public @interface EnableFunctionDeployer {
 
 }

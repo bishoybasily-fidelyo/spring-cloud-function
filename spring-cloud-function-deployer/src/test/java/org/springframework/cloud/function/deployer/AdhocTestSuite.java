@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2015 the original author or authors.
+ * Copyright 2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,9 +27,16 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Dave Syer
  */
 @RunWith(Suite.class)
-@SuiteClasses({ FunctionAppDeployerTests.class,
-		FunctionExtractingFunctionCatalogTests.class,
-		FunctionExtractingFunctionCatalogIntegrationTests.class })
+@SuiteClasses({ FunctionCreatorConfigurationTests.FunctionCompositionTests.class,
+		FunctionCreatorConfigurationTests.SingleFunctionTests.class,
+		FunctionCreatorConfigurationTests.ManualSpringFunctionTests.class,
+		ContextRunnerTests.class,
+		SpringFunctionAppConfigurationTests.ProcessorTests.class,
+		SpringFunctionAppConfigurationTests.SourceTests.class,
+		FunctionCreatorConfigurationTests.ConsumerCompositionTests.class,
+		SpringFunctionAppConfigurationTests.CompositeTests.class,
+		ApplicationRunnerTests.class, SpringFunctionAppConfigurationTests.SinkTests.class,
+		FunctionCreatorConfigurationTests.SupplierCompositionTests.class })
 @Ignore
 public class AdhocTestSuite {
 
